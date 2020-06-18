@@ -3,6 +3,29 @@
 {% block title %}Détail de l'article{% endblock %}
 
 {% block body %}
-    Ceci est le détail d'un article</br>
-    <a href="{{ path('home') }}">Retour à l'accueil</a>
+<div class="text mt-3">
+    <nav class="navbar navbar-dark bg-dark">
+        <p class="navbar-brand" style="text:center;" >Détail d'un article</p>
+    </nav>
+</div>
+<div class="row" style="justify-content: center;">
+    <div class="card mt-4" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ detail.nom }}</h5>
+                <h6 class="card-subtitle mb-2 text-center">Catégorie : {{ detail.categorie.nom }}</h6>
+                <p class="card-text text-center">Marque : {{ detail.marque.nom }}</p>
+                <p> Référence : {{ detail.reference }}</p>
+                <a href="{{ path('add_article_id', {
+                    id: detail.id
+                }) }}">Editer l'article</a>
+            </div>
+        </div>
+</div>
+<div class="row mt-4"style="justify-content: center;">
+    <a href="{{ path('home') }}" class="card-link">
+        <button type="button" class="btn btn-success">Retour à l'accueil</button>
+    </a>
+</div>
+
+
 {% endblock %}

@@ -3,7 +3,22 @@
 {% block title %}Ajouter un article{% endblock %}
 
 {% block body %}
-        {{ form(form)}}
 
-        <a href="{{ path('home') }}">Retour à l'accueil</a>
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+<div class="position mt-3">
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.reference) }}
+        {{ form_row(form.marque) }}
+        {{ form_row(form.categorie) }}
+        {{ form_row(form.quantite) }}
+    {{ form_end(form) }}
+    <div class="accueil text-center">
+        <a href="{{ path('home') }}" class="card-link">
+            <button type="button" class="btn btn-success">Retour à l'accueil</button>
+        </a>
+    </div>
+</div>
 {% endblock %}

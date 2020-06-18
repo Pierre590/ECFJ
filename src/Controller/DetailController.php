@@ -2,18 +2,23 @@
 
 namespace App\Controller;
 
+use App\Entity\Articles;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DetailController extends AbstractController
 {
     /**
-     * @Route("/detail", name="detail_article")
+     * @Route("/detail/{id}", name="detail_article_id")
      */
-    public function index()
+    public function index($id)
     {
+        $detail = $this->getDoctrine()
+            ->getRepository(Articles::class)
+            ->find($id);
+
         return $this->render('detail/index.html.twig', [
-            'controller_name' => 'DetailController',
+            'detail' => $detail,
         ]);
     }
 }

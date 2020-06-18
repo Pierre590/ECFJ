@@ -2,23 +2,27 @@
 
 {% block title %}ECFJ{% endblock %}
 
+
+
 {% block body %}
-<div class="card mt-4" style="width: 18rem;">
-    <div class="card-body">
-        {% for article in articles %}
-            <h5 class="card-title text-center">{{ article.nom }}</h5>
-            <h6 class="card-subtitle mb-2 text-center">{{ article.marque.nom }}</h6>
-            <p class="card-text text-center">Reste {{ article.quantite }} en stock.</p>
-            <a href="{{ path('detail_article') }}" class="card-link">Détail de l'article</a></br>
-            <a href="{{ path('add_article') }}" class="card-link">Editer un article</a>
-        {% endfor %}
-    </div>
-
-
-
-
-
-
+<div class="row">
+    {% for article in articles %}
+        <div class="card mt-5 ml-4" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center">Nom : {{ article.nom }}</h5>
+                <h6 class="card-subtitle mb-2 text-center">Marque : {{ article.marque.nom }}</h6>
+                <p class="card-text text-center">Reste {{ article.quantite }} en stock.</p>
+                <a href="{{ path('detail_article_id', {
+                    id: article.id
+                }) }}" class="card-link">Détail de l'article</a></br>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="row mt-4 text-center"style="justify-content: center;">
+    <a href="{{ path('add_article') }}" class="card-link">
+        <button type="button" class="btn btn-secondary">Ajouter un article</button>
+    </a>
 </div>
 
 
